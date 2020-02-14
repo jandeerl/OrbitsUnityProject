@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RotateController : MonoBehaviour
 {
-    public float yRotation = 5f;
+    float yRotation;
     public float rotationSpeed = 4f;
     public bool changeDirections;
     
