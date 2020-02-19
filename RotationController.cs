@@ -2,34 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateController : MonoBehaviour
+public class RotationController : MonoBehaviour
 {
-    float yRotation;
-    public float rotationSpeed = 4f;
-    public bool changeDirections;
-    
-    void Start()
-    {
+    [SerializeField]
+    float rotationSpeed = 4f;
+    [SerializeField]
+    bool changeDirections;
 
+    float yRotation;
+
+    void Update()
+    {
+        RotateSelf();
     }
 
-    // Update is called once per frame
-    void Update()
+    //Rotates the object along Y axis
+    void RotateSelf()
     {
         if (!changeDirections)
         {
             yRotation += Time.deltaTime * rotationSpeed;
             transform.rotation = Quaternion.Euler(0, yRotation, 0);
-            if (yRotation > 360)
-                yRotation = transform.rotation.y;
         }
         else
         {
             yRotation -= Time.deltaTime * rotationSpeed;
             transform.rotation = Quaternion.Euler(0, yRotation, 0);
-            if (yRotation < -360)
-                yRotation = transform.rotation.y;
         }
 
+        //makes sure both yRotation and transform's rotation
+        //don't increment to infinity
+        if (yRotation > 360 || yRotation < -360)
+            yRotation = transform.rotation.y;
     }
 }
