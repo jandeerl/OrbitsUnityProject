@@ -7,9 +7,11 @@ public class OrbitController : MonoBehaviour
     [SerializeField]
     GameObject objectToOrbit;
     [SerializeField]
-    float distanceFromObject = 5f;
+    float xAxis = 5f;
     [SerializeField]
-    float yOffset = 0f;
+    float zAxis = 5f;
+    [SerializeField]
+    float yAxis = 0f;
     [SerializeField]
     float speed = 5f;
     [SerializeField]
@@ -31,24 +33,26 @@ public class OrbitController : MonoBehaviour
         OrbitObject();
     }
 
-    //moves the object along a circular orbit on a horizontal plane
+    //moves the object along selected axes on an orbit
     void OrbitObject()
     {
         velocity += Time.deltaTime * speed / 10f;
         Vector3 pos;
+
+        //reverses the movement along z Axis
         if (switchDirection)
         {
                 pos = new Vector3(
-                Mathf.Cos(velocity) * distanceFromObject,
-                yOffset,
-                -Mathf.Sin(velocity) * distanceFromObject);        
+                Mathf.Cos(velocity) * xAxis,
+                Mathf.Cos(velocity) * yAxis,
+                -Mathf.Sin(velocity) * zAxis);        
         }
         else
         {
                 pos = new Vector3(
-                Mathf.Cos(velocity) * distanceFromObject,
-                yOffset,
-                Mathf.Sin(velocity) * distanceFromObject);
+                Mathf.Cos(velocity) * xAxis,
+                Mathf.Cos(velocity) * yAxis,
+                Mathf.Sin(velocity) * zAxis);
         }
         transform.position = objectToOrbit.transform.position + pos;
     }
