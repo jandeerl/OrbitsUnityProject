@@ -7,4 +7,5 @@ Simply import it to an Unity3D project and attach to a GameObject.
 Set the object around which the current GameObject is meant to orbit and set the distances however you see fit. 
 Keep the axes the same size to keep the orbit circular, or make the values different for elliptic orbits.
 
-![orbits](https://user-images.githubusercontent.com/19371732/156653722-bcd357df-3031-4dc5-84f1-0971921efeef.gif)
+
+![orbits2](https://user-images.githubusercontent.com/19371732/156653782-aa1474d0-ea81-4b4d-8b28-9dc6e6ed03bd.gif)
